@@ -1,0 +1,13 @@
+@import '../../../../colors.module.scss';
+
+.task__form{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.input__add{
+    width: 100%;
+    padding: 5px;
+    font-size: 20px;
+}
