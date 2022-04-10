@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\TodoRequest;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 
@@ -36,9 +37,14 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TodoRequest $request)
     {
-        //
+        $todo = Todo::create([
+            'value' => $request->value,
+            'done' => $request->done,
+        ]);
+
+        return response($todo, 201);
     }
 
     /**

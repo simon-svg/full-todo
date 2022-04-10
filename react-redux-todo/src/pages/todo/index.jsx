@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+// Actions
+import { fetchTodos } from '../../store/todo/todo.action';
 
 // Components
 import TodoHead from '../../components/pages/Todo/TodoHead';
@@ -10,6 +14,12 @@ import TodoList from '../../components/pages/Todo/TodoList';
 import styles from './todo.module.scss';
 
 const Todo = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchTodos());
+    }, [])
+
     return (
         <div className={styles.todo}>
             <TodoHead />

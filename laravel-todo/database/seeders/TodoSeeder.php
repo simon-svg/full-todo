@@ -17,7 +17,7 @@ class TodoSeeder extends Seeder
     {
         DB::table('todos')->insert([
             [
-                'value' => 'to talk with Nelly',
+                'value' => 'to see Nelly',
                 'done' => false,
             ],
             [
