@@ -3,10 +3,13 @@ import store from "store";
 
 const axiosAPI = axios.create({
     baseURL: 'http://fulltodo.loc/api/',
+    headers: {
+        "Content-type": "application/json",
+    }
 });
 
 axiosAPI.interceptors.request.use((req) => {
-    if(store.get('access_token')){
+    if (store.get('access_token')) {
         req.headers.Authorization = `Beraer ${store.get('access_token')}`;
     }
 
