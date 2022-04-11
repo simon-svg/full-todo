@@ -21,7 +21,7 @@ const TodoList = () => {
                             <ListItem
                                 key={item.id}
                                 id={item.id}
-                                completed={item.completed}
+                                done={item.done}
                                 value={item.value}
                             />
                         )

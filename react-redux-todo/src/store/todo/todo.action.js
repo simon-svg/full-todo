@@ -1,6 +1,12 @@
-import axiosAPI from '../../utils/request';
+import todo from '../../services/todo';
 import { ADD_TODO, DONE_TODO, DELETE_TODO, EDIT_TODO_VALUE, CHANGE_TODO_VALUE, IS_LOADING, GET_TODO } from './todo.actionTypes';
 
+export const getTodos = (todos) => {
+    return {
+        type: GET_TODO,
+        payload: todos,
+    }
+}
 export const addTodo = (todoItem) => {
     return {
         type: ADD_TODO,
@@ -31,30 +37,35 @@ export const changeTodoValue = (todoItem) => {
         payload: todoItem
     }
 }
-
-
-
-
-
 export const isLoading = (loading) => {
     return {
         type: IS_LOADING,
         payload: loading,
     }
 }
-export const getTodos = (todos) => {
-    return {
-        type: GET_TODO,
-        payload: todos,
-    }
-}
+
+
+
+
+
+
+// Thunk
 export const fetchTodos = () => async (dispatch) => {
     try {
         dispatch(isLoading(true));
-        const response = await axiosAPI.get('todos');
+        const response = await todo.getTodos();
         dispatch(getTodos(response.data));
         dispatch(isLoading(false));
     } catch (e) {
         console.log(e);
+    }
+}
+export const fetchAddTodos = (data) => async (dispatch) => {
+    try {
+        await todo.createTodo(data).finally(
+            dispatch(addTodo(data))
+        );
+    } catch (e) {
+        console.log(e)
     }
 }

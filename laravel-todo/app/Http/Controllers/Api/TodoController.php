@@ -37,14 +37,14 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TodoRequest $request)
+    public function store(Request $request)
     {
         $todo = Todo::create([
             'value' => $request->value,
             'done' => $request->done,
         ]);
 
-        return response($todo, 201);
+        return response()->json($todo, 201);
     }
 
     /**

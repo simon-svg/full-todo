@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 
 // Actions
-import { addTodo } from '../../../../store/todo/todo.action';
+import { fetchAddTodos } from '../../../../store/todo/todo.action';
 
 // Common
 import FormButton from '../../../common/buttons/FormButton';
@@ -25,9 +25,9 @@ const TodoAddTask = () => {
         if(!inpValue){
             return
         }
-        dispatch(addTodo({
+        dispatch(fetchAddTodos({
             id: nanoid(),
-            completed: false,
+            done: 0,
             value: inpValue,
         }));
 

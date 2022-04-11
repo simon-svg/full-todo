@@ -6,7 +6,7 @@ import { doneTodo, deleteTodo, editTodoValue } from '../../../../../store/todo/t
 // Styles
 import styles from './todoItem.module.scss';
 
-const ListItem = ({ id, completed, value }) => {
+const ListItem = ({ id, done, value }) => {
     const dispatch = useDispatch();
 
     const handleDone = () => {
@@ -23,7 +23,7 @@ const ListItem = ({ id, completed, value }) => {
 
     return (
         <li className={styles.item}>
-            <span className={styles.task__name} onClick={handleDone} style={{ textDecoration: completed ? 'line-through' : 'none' }} >
+            <span className={styles.task__name} onClick={handleDone} style={{ textDecoration: done ? 'line-through' : 'none' }} >
                 {value}
             </span>
 
