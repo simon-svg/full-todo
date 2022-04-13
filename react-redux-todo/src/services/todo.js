@@ -8,7 +8,7 @@ const todo = {
         return request('GET', 'todos');
     },
     deleteTodos(id) {
-        return request('DELETE', `todos/delete/${id}`);
+        return request('DELETE', `todos/${id}`);
     }
 }
 

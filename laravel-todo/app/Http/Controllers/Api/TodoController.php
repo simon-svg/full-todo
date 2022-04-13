@@ -16,7 +16,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::all();
+        $todos = Todo::orderBy('id', 'DESC')->get();
 
         return response($todos, 200);
     }
@@ -89,6 +89,8 @@ class TodoController extends Controller
      */
     public function destroy(Todo $todo)
     {
-        //
+        $todo->delete();
+
+        return response()->json(null, 204);
     }
 }

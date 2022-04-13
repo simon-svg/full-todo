@@ -62,10 +62,18 @@ export const fetchTodos = () => async (dispatch) => {
 }
 export const fetchAddTodos = (data) => async (dispatch) => {
     try {
-        await todo.createTodo(data).finally(
-            dispatch(addTodo(data))
-        );
+        const response = await todo.createTodo(data);
+        dispatch(addTodo(response.data))
     } catch (e) {
+        console.log(e)
+    }
+}
+export const fetchDeleteTodo = (id) => async (dispatch) => {
+    try {
+        const response = await todo.deleteTodos(id);
+        dispatch(deleteTodo(id));
+    }
+    catch (e) {
         console.log(e)
     }
 }
