@@ -7,8 +7,14 @@ const todo = {
     getTodos() {
         return request('GET', 'todos');
     },
-    deleteTodos(id) {
-        return request('DELETE', `todos/delete/${id}`);
+    deleteTodo(id) {
+        return request('DELETE', `todos/${id}`);
+    },
+    doneTodo(id) {
+        return request('PUT', `todos/${id}`);
+    },
+    editTodo(data){
+        return request('PUT', `todos/${data.id}`, data);
     }
 }
 

@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 
 // Actions
-import { doneTodo, deleteTodo, editTodoValue } from '../../../../../store/todo/todo.action';
+import { fetchDone, fetchDeleteTodo, editTodoValue } from '../../../../../store/todo/todo.action';
 
 // Styles
 import styles from './todoItem.module.scss';
@@ -10,11 +10,11 @@ const ListItem = ({ id, done, value }) => {
     const dispatch = useDispatch();
 
     const handleDone = () => {
-        dispatch(doneTodo(id))
+        dispatch(fetchDone(id))
     }
 
     const handleDelete = () => {
-        dispatch(deleteTodo(id))
+        dispatch(fetchDeleteTodo(id))
     }
 
     const handleEditValue = () => {

@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'http://fulltodo.loc/api/todos',
+        'http://fulltodo.loc/api/todos/*',
     ];
 }

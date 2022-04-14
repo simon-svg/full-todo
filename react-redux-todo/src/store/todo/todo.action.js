@@ -64,8 +64,37 @@ export const fetchAddTodos = (data) => async (dispatch) => {
     try {
         const response = await todo.createTodo(data);
         dispatch(addTodo(response.data));
-        console.log(response);
     } catch (e) {
-        console.log(e)
+        console.log(e);
+    }
+}
+export const fetchDeleteTodo = (id) => async (dispatch) => {
+    try {
+        const response = await todo.deleteTodo(id);
+        if (response.data.message === 'success') {
+            dispatch(deleteTodo(id));
+        } else {
+            return false;
+        }
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+export const fetchDone = (id) => async (dispatch) => {
+    try {
+        const response = await todo.doneTodo(id);
+        dispatch(doneTodo(response.data.id));
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+export const fetchEdit = (data) => async (dispatch) => {
+    try {
+        const response = await todo.editTodo(data);
+    }
+    catch (e) {
+        console.log(e);
     }
 }

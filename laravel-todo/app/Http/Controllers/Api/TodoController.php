@@ -16,7 +16,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::all();
+        $todos = Todo::orderBy('id', 'DESC')->get();
 
         return response($todos, 200);
     }
@@ -66,7 +66,7 @@ class TodoController extends Controller
      */
     public function edit(Todo $todo)
     {
-        //
+        
     }
 
     /**
@@ -78,7 +78,12 @@ class TodoController extends Controller
      */
     public function update(Request $request, Todo $todo)
     {
-        //
+        $value = $todo->done == true ? 0 : 1;
+        $todo->update([
+            'done' => $value,
+        ]);
+
+        return response()->json($todo, 200);
     }
 
     /**
@@ -89,6 +94,17 @@ class TodoController extends Controller
      */
     public function destroy(Todo $todo)
     {
-        //
+        $message = $todo->delete();
+
+        if(isset($message) && !empty($message)){
+            return response([
+                'message' => 'success'
+            ], 202);
+        }
+        else{
+            return response([
+                'message' => 'fail'
+            ], 404);
+        }
     }
 }
