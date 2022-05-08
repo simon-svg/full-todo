@@ -4,7 +4,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 .title{
     font-size: 30px;
+}
+.todo__btns{
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.app_todo{
+    margin-right: 10px;
 }

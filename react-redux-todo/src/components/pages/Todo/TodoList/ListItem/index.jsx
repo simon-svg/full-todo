@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 // Actions
 import { fetchDone, fetchDeleteTodo, editTodoValue } from '../../../../../store/todo/todo.action';
 
+// Commons
+import IconButton from "../../../../common/buttons/IconButton";
+
 // Styles
 import styles from './todoItem.module.scss';
 
@@ -28,12 +31,12 @@ const ListItem = ({ id, done, value }) => {
             </span>
 
             <div className={styles.icons__group}>
-                <button className={styles.icon__cont} onClick={handleDelete}>
+                <IconButton onClick={handleDelete}>
                     <i className="fas fa-times"></i>
-                </button>
-                <button className={styles.icon__cont} onClick={handleEditValue}>
+                </IconButton>
+                <IconButton onClick={handleEditValue}>
                     <i className="fas fa-pen"></i>
-                </button>
+                </IconButton>
             </div>
         </li>
     )

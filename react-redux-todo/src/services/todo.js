@@ -15,6 +15,9 @@ const todo = {
     },
     editTodo(data){
         return request('PUT', `todos/${data.id}`, data);
+    },
+    getDeletedTodo() {
+        return request('Get', 'deletedTodos');
     }
 }
 

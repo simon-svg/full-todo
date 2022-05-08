@@ -1,5 +1,5 @@
 import { isLoading } from "./todo.action";
-import { ADD_TODO, DONE_TODO, DELETE_TODO, EDIT_TODO_VALUE, CHANGE_TODO_VALUE, IS_LOADING, GET_TODO } from "./todo.actionTypes";
+import { ADD_TODO, DONE_TODO, DELETE_TODO, EDIT_TODO_VALUE, CHANGE_TODO_VALUE, IS_LOADING, GET_TODO, GET_DELETED_TODO } from "./todo.actionTypes";
 
 const initialState = {
     todoList: [],
@@ -55,8 +55,13 @@ const todoReducer = (state = initialState, action) => {
         case GET_TODO:
             return {
                 ...state,
-                todoList: [...action.payload, ...state.todoList]
+                todoList: [...action.payload]
             };
+        case GET_DELETED_TODO:
+            return {
+                ...state,
+                todoList: [...action.payload]
+            }
         default:
             return state
     }

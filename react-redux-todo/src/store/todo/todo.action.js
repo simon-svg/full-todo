@@ -1,5 +1,5 @@
 import todo from '../../services/todo';
-import { ADD_TODO, DONE_TODO, DELETE_TODO, EDIT_TODO_VALUE, CHANGE_TODO_VALUE, IS_LOADING, GET_TODO } from './todo.actionTypes';
+import { ADD_TODO, DONE_TODO, DELETE_TODO, EDIT_TODO_VALUE, CHANGE_TODO_VALUE, IS_LOADING, GET_TODO, GET_DELETED_TODO } from './todo.actionTypes';
 
 export const getTodos = (todos) => {
     return {
@@ -41,6 +41,13 @@ export const isLoading = (loading) => {
     return {
         type: IS_LOADING,
         payload: loading,
+    }
+}
+
+export const getDeletedTodos = (todos) => {
+    return {
+        type: GET_DELETED_TODO,
+        payload: todos,
     }
 }
 
@@ -95,6 +102,17 @@ export const fetchEdit = (data) => async (dispatch) => {
         const response = await todo.editTodo(data);
     }
     catch (e) {
+        console.log(e);
+    }
+}
+export const fetchDeletedTodos = () => async (dispatch) => {
+    try {
+        dispatch(isLoading(true));
+        const response = await todo.getDeletedTodo();
+        dispatch(getDeletedTodos(response.data));
+        dispatch(isLoading(false));
+    }
+    catch (e){
         console.log(e);
     }
 }

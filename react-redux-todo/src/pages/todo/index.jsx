@@ -18,6 +18,7 @@ const Todo = () => {
 
     useEffect(() => {
         dispatch(fetchTodos());
+        console.log('baa');
     }, [])
 
     return (

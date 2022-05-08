@@ -1,0 +1,11 @@
+@import '../../../../colors.module.scss';
+
+.icon__cont {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  cursor: pointer;
+}

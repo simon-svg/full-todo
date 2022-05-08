@@ -14,15 +14,6 @@
 .icons__group{
     display: flex;
 }
-.icon__cont {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    cursor: pointer;
-}
 .icon__cont:first-child {
     margin-right: 10px;
 }

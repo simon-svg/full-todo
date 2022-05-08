@@ -66,7 +66,7 @@ class TodoController extends Controller
      */
     public function edit(Todo $todo)
     {
-        
+
     }
 
     /**
@@ -106,5 +106,16 @@ class TodoController extends Controller
                 'message' => 'fail'
             ], 404);
         }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deletedTodos (){
+        $todos = Todo::onlyTrashed()->get();
+
+        return response($todos, 200);
     }
 }
